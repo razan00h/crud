@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <title>Document</title>
+   
+</head>
+
+<body>
+    <div class="add-course">
+        <div class="container">
+            <h1>CRUD System</h1>
+            <form action="">
+                <div class="mb-3">
+                    <label for="">course name <span class="text-danger">*</span> </label>
+                    <input class="inputs form-control" type="text" placeholder="cource name" id="courseName" fdprocessedid="n6mpg">
+                </div>
+                <label for="">course category</label>
+                <input class="inputs form-control" type="text" placeholder="cource category" id="courseCategory" fdprocessedid="nvu25k">
+                <label for="">course price</label>
+                <input class="inputs form-control" type="number" placeholder="cource price" id="coursePrice" fdprocessedid="opw39s">
+                <label for="">course description</label>
+                <textarea class="inputs form-control" placeholder="course description" id="courseDescription"></textarea>
+                <label for="">course capacity</label>
+                <input class="inputs form-control" type="number" placeholder="cource capacity" id="courseCapacity" fdprocessedid="9wcdop">
+
+                <input type="submit" value="Add Course" class="btn btn-outline-secondary mt-3" id="click" fdprocessedid="ot7xab">
+                <button class="btn btn-outline-secondary mt-3" type="reset" id="resetbtn" fdprocessedid="iw90xe">clear</button>
+            </form>
+        </div>
+        <div class="container">
+            <input type="search" placeholder="search..." id="search" class="form-control my-3">
+
+            <button id="deleteBtn" class="btn btn-outline-danger text-center my-3" fdprocessedid="rtbwze">delete all</button><button class="btn btn-outline-danger" onclick="deleatcource()" fdprocessedid="0i7m09">Delete</button><table class="table table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>name</th>
+                        <th>category</th>
+                        <th>price</th>
+                        <th>description</th>
+                        <th>capacity</th>
+                        <th>update</th>
+                        <th>delete</th>
+        
+                    </tr>
+                </thead>
+                
+                <tbody id="data">
+
+                    
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+   
+
+<script src="a.js"></script>
+<script src="bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
