@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <title>Document</title>
-   
+
+    <style>
+        .text.text-danger{
+            display: none;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -16,25 +22,38 @@
             <form action="">
                 <div class="mb-3">
                     <label for="">course name <span class="text-danger">*</span> </label>
-                    <input class="inputs form-control" type="text" placeholder="cource name" id="courseName" fdprocessedid="n6mpg">
+                    <input class="inputs form-control" type="text" placeholder="cource name" id="courseName"
+                        fdprocessedid="n6mpg">
+                    <p class="nameError text text-danger mt-3">
+                        name must be start with capital and number of char between 2| and 10
+                    </p>
                 </div>
                 <label for="">course category</label>
-                <input class="inputs form-control" type="text" placeholder="cource category" id="courseCategory" fdprocessedid="nvu25k">
+                <input class="inputs form-control" type="text" placeholder="cource category" id="courseCategory"
+                    fdprocessedid="nvu25k">
                 <label for="">course price</label>
-                <input class="inputs form-control" type="number" placeholder="cource price" id="coursePrice" fdprocessedid="opw39s">
+                <input class="inputs form-control" type="number" placeholder="cource price" id="coursePrice"
+                    fdprocessedid="opw39s">
                 <label for="">course description</label>
-                <textarea class="inputs form-control" placeholder="course description" id="courseDescription"></textarea>
+                <textarea class="inputs form-control" placeholder="course description"
+                    id="courseDescription"></textarea>
                 <label for="">course capacity</label>
-                <input class="inputs form-control" type="number" placeholder="cource capacity" id="courseCapacity" fdprocessedid="9wcdop">
+                <input class="inputs form-control" type="number" placeholder="cource capacity" id="courseCapacity"
+                    fdprocessedid="9wcdop">
 
-                <input type="submit" value="Add Course" class="btn btn-outline-secondary mt-3" id="click" fdprocessedid="ot7xab">
-                <button class="btn btn-outline-secondary mt-3" type="reset" id="resetbtn" fdprocessedid="iw90xe">clear</button>
+                <input type="submit" value="Add Course" disabled class="btn btn-outline-secondary mt-3 " id="click"
+                    fdprocessedid="ot7xab">
+                <button class="btn btn-outline-secondary mt-3" type="reset" id="resetbtn"
+                    fdprocessedid="iw90xe">clear</button>
             </form>
         </div>
         <div class="container">
             <input type="search" placeholder="search..." id="search" class="form-control my-3">
 
-            <button id="deleteBtn" class="btn btn-outline-danger text-center my-3" fdprocessedid="rtbwze">delete all</button><button class="btn btn-outline-danger" onclick="deleatcource()" fdprocessedid="0i7m09">Delete</button><table class="table table table-striped">
+            <button id="deleteBtn" class="btn btn-outline-danger text-center my-3" fdprocessedid="rtbwze">delete
+                all</button><button class="btn btn-outline-danger" onclick="deleatcource()"
+                fdprocessedid="0i7m09">Delete</button>
+            <table class="table table table-striped">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -45,13 +64,13 @@
                         <th>capacity</th>
                         <th>update</th>
                         <th>delete</th>
-        
+
                     </tr>
                 </thead>
-                
+
                 <tbody id="data">
 
-                    
+
 
 
                 </tbody>
@@ -61,10 +80,12 @@
 
 
 
-   
 
-<script src="a.js"></script>
-<script src="bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script src="a.js"></script>
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

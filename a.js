@@ -5,10 +5,17 @@ var courseDescription =document.querySelector("#courseDescription");
 var courseCapacity =document.querySelector("#courseCapacity");
 var addbtn =document.querySelector("#click");
 var search = document.querySelector ("#search");
-var courses=[];
 var inputs=document.querySelectorAll(".inputs");
+var nameError=document.querySelector(".nameError");
+var isNameTrue=false;
 
 
+if(JSON.parse(localStorage.getItem("courses"))==null){
+    var courses=[];
+}else{
+    courses=JSON.parse(localStorage.getItem("courses"));
+    displaydata(); 
+}
 addbtn.addEventListener("click",function(e){
 e.preventDefault();
 addcourse()
@@ -24,9 +31,24 @@ price:coursePrice.value,
 desc:courseDescription.value,
 capacity:courseCapacity.value,
 }
-courses.push(cource)
-//console.log(courses);
-
+courses.push(cource);
+localStorage.setItem("courses",JSON.stringify(courses));
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'center-center',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  
+  Toast.fire({
+    icon: 'success',
+    title: 'course added successfully'
+  })
 }
 function clearinputs(){
 for(var i=0;i<inputs.length;i++){
@@ -55,9 +77,44 @@ document.getElementById("data").innerHTML=result;
 
 }
 function deleatcource(id){
+const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  })
+  
+  swalWithBootstrapButtons.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel!',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+        courses.splice(id,1);
+        localStorage.setItem("courses",JSON.stringify(courses));
+        displaydata();
+      swalWithBootstrapButtons.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'Cancelled',
+        'Your imaginary file is safe :)',
+        'error'
+      )
+    }
+  })
 
-courses.splice(id,1)
-displaydata()
 }
 
 search.addEventListener ("keyup", function(e) {
@@ -85,7 +142,9 @@ search.addEventListener ("keyup", function(e) {
         if(pattern.test(courseName.value)) {
         if (courseName.classList.contains ('is-invalid')){
         courseName.classList.remove('is-invalid');
-        courseName.classList.add("is-valid"); I
+        courseName.classList.add("is-valid"); 
+        nameError.style.cssText="display: none";
+        isNameTrue=true;
         }
         courseName.classList.add("is-valid");
         }else{
@@ -94,5 +153,13 @@ search.addEventListener ("keyup", function(e) {
         courseName.classList.add("is-invalid");
         }
         courseName.classList.add("is-invalid");
+        nameError.style.cssText="display: block";
+        isNameTrue=false;
+        }
+
+    if(isNameTrue){
+        addbtn.removeAttribute("disabled");
+        }else{
+        addbtn.setAttribute("disabled","disabled");
         }
         })
